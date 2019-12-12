@@ -25,10 +25,15 @@ public class AkkaHttpServer {
     //запрос по url из параметра
     private ActorSystem system = ActorSystem.create("routes");
     private ActorRef storageActor;
+    private CompletionStage<ServerBinding> binding;
+    private String host;
+    private int port;
+    
 
 
-    public AkkaHttpServer() {
+    public AkkaHttpServer(String host, int port) {
         this.storageActor = system.actorOf(Props.create(StorageActor.class), "Storage");
+
     }
 
     public void start() {
