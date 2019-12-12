@@ -1,3 +1,4 @@
+
 import akka.NotUsed;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.ConnectHttp;
@@ -22,9 +23,10 @@ public class AkkaHttpServer {
 
 
     //a. Инициализация http сервера в akka
-    System.out.println("start!");
     ActorSystem system = ActorSystem.create("routes");
     final AsyncHttpClient asyncHttpClient = asyncHttpClient();
+
+
     final Http http = Http.get(system);
     final ActorMaterializer materializer = ActorMaterializer.create(system);
 
@@ -38,11 +40,11 @@ public class AkkaHttpServer {
             materializer
     );
 
-    System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
-    System.in.read();
+    //System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+    //System.in.read();
 
-        binding
-                .thenCompose(ServerBinding::unbind)
-                .thenAccept(unbound -> system.terminate());
+    binding
+            .thenCompose(ServerBinding::unbind)
+            .thenAccept(unbound -> system.terminate());
 
 }
