@@ -28,15 +28,19 @@ public class AkkaHttpServer {
 
     public void start() {
         //a. Инициализация http сервера в akka
+        final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
+        final AsyncHttpClient asyncHttpClient = asyncHttpClient();
+
+        
     }
 
 
 
-    //final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
 
-    //final Http http = Http.get(system);
+
+
 
 
 
