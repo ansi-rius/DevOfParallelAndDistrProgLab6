@@ -1,3 +1,18 @@
+import akka.NotUsed;
+import akka.actor.ActorSystem;
+import akka.http.javadsl.ConnectHttp;
+import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
+import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
+import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Flow;
+import org.asynchttpclient.AsyncHttpClient;
+
+import java.util.concurrent.CompletionStage;
+
+import static org.asynchttpclient.Dsl.asyncHttpClient;
+
 public class AkkaHttpServer {
     //создаем с помощью api route в акка http сервер который принимает два
     //параметра, и если счетчик не равен 0, то сначала получает новый урл сервера
@@ -5,15 +20,15 @@ public class AkkaHttpServer {
     //query параметрами (url, counter) но счетчиком на 1 меньше. Либо осуществляет
     //запрос по url из параметра
 
+
     //a. Инициализация http сервера в akka
-        System.out.println("start!");
+    System.out.println("start!");
     ActorSystem system = ActorSystem.create("routes");
     final AsyncHttpClient asyncHttpClient = asyncHttpClient();
     final Http http = Http.get(system);
     final ActorMaterializer materializer = ActorMaterializer.create(system);
 
-    //тестировщик..
-    final TestPerformer test = new TestPerformer(materializer, system, asyncHttpClient);
+
 
     final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = test.createFlow(); //<вызов
     //метода которому передаем Http, ActorSystem и ActorMaterializer>;
@@ -22,6 +37,12 @@ public class AkkaHttpServer {
             ConnectHttp.toHost("localhost", 8086),
             materializer
     );
-        System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
-        System.in.read();
+
+    System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+    System.in.read();
+
+        binding
+                .thenCompose(ServerBinding::unbind)
+                .thenAccept(unbound -> system.terminate());
+
 }
