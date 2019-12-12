@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="" />
+    <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/AnonymizerApp.java" afterPath="$PROJECT_DIR$/src/main/java/AnonymizerApp.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,14 +25,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnonymizerApp.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnonymizerApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/AnonymizerApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            <state relative-caret-position="324">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AkkaHttpServer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AkkaHttpServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,6 +81,7 @@
         <option value="$PROJECT_DIR$/src/main/java/StorageActor.java" />
         <option value="$PROJECT_DIR$/src/main/java/AnonimizerApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/AnonymizerApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AkkaHttpServer.java" />
       </list>
     </option>
   </component>
@@ -316,11 +329,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AnonymizerApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        <state relative-caret-position="324">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AkkaHttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
