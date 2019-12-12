@@ -10,7 +10,7 @@ import akka.stream.javadsl.Flow;
 
 import java.util.concurrent.CompletionStage;
 
-public class AnonimizerApp {
+public class AnonymizerApp {
     public static void main(String[] args) {
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
