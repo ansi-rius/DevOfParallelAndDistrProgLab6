@@ -8,6 +8,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import org.asynchttpclient.AsyncHttpClient;
@@ -37,8 +38,20 @@ public class AkkaHttpServer {
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.createRoute(system).flow(system, materializer);
+                ServerRoutes.createRoute(system)
+                        .flow(system, materializer);
 
+        //метода которому передаем Http, ActorSystem и ActorMaterializer>;
+        final CompletionStage<ServerBinding> binding = http.bindAndHandle(
+                routeFlow,
+                ConnectHttp.toHost("localhost", 8086),
+                materializer
+        );
+        System.out.println("Server started!");
+    }
+
+    public void close() {
+        //закрываем
 
     }
 
@@ -52,13 +65,6 @@ public class AkkaHttpServer {
 
 
 
-    final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = test.createFlow(); //<вызов
-    //метода которому передаем Http, ActorSystem и ActorMaterializer>;
-    final CompletionStage<ServerBinding> binding = http.bindAndHandle(
-            routeFlow,
-            ConnectHttp.toHost("localhost", 8086),
-            materializer
-    );
 
     //System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
     //System.in.read();
