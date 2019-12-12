@@ -1,6 +1,7 @@
+import java.io.IOException;
 
 public class AnonymizerApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         //Администратор запускает несколько серверов. В параметре командной строки
         //он указывает порт для каждого.
         if (args.length != 2) {
@@ -10,7 +11,11 @@ public class AnonymizerApp {
 
         String host = args[0];
         int port = Integer.parseInt(args[1]);
-        
+
+        AkkaHttpServer server = new AkkaHttpServer();
+        server.start();
+        System.in.read();
+
 
     }
 }
