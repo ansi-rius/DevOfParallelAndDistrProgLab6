@@ -8,7 +8,8 @@ public class AnonymizerApp {
             System.exit(-1);
         }
 
-        
+        String host = args[0];
+        int port = 
 
     }
 }
