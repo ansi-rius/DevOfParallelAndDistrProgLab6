@@ -4,7 +4,7 @@ public class AnonymizerApp {
         //Администратор запускает несколько серверов. В параметре командной строки
         //он указывает порт для каждого.
         if (args.length != 2) {
-            System.out.println("Usage: AnonymizerApp <");
+            System.out.println("Usage: AnonymizerApp <host> <post>");
         }
 
     }
