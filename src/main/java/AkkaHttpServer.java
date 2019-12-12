@@ -1,6 +1,8 @@
 
 import akka.NotUsed;
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
@@ -20,10 +22,12 @@ public class AkkaHttpServer {
     //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
     //query параметрами (url, counter) но счетчиком на 1 меньше. Либо осуществляет
     //запрос по url из параметра
-    ActorSystem system = ActorSystem.create("routes");
+    private ActorSystem system = ActorSystem.create("routes");
+    private ActorRef storageActor;
+
 
     public AkkaHttpServer() {
-
+        this.storageActor = system.actorOf(Props.create(StorageActor.class), "Storage");
     }
 
     public void start() {
@@ -32,7 +36,7 @@ public class AkkaHttpServer {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
-        
+
     }
 
 
