@@ -11,9 +11,12 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
+import java.io.IOException;
 import java.util.concurrent.CompletionStage;
+import java.util.logging.Logger;
 
 import static org.asynchttpclient.Dsl.asyncHttpClient;
 
@@ -28,6 +31,9 @@ public class AkkaHttpServer {
     private CompletionStage<ServerBinding> binding;
     private String host;
     private int port;
+    private String connectString = "127.0.0.1:2181";
+    private int sessionTimeout = 3000;
+    private Logger log = Logger.getLogger(AkkaHttpServer.class.getName());
 
 
 
@@ -36,10 +42,11 @@ public class AkkaHttpServer {
         this.host = host;
         this.port = port;
         this.system = ActorSystem.create("routes");
-        
+
     }
 
-    public void start() {
+    public void start() throws IOException{
+        final ZooKeeper zoo = new ZooKeeper(connectString, sessionTimeout, watcher -> log.info(watcher.toString()));
         //a. Инициализация http сервера в akka
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
