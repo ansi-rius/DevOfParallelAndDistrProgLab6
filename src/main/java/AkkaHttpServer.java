@@ -23,17 +23,20 @@ public class AkkaHttpServer {
     //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
     //query параметрами (url, counter) но счетчиком на 1 меньше. Либо осуществляет
     //запрос по url из параметра
-    private ActorSystem system = ActorSystem.create("routes");
+    private ActorSystem system;
     private ActorRef storageActor;
     private CompletionStage<ServerBinding> binding;
     private String host;
     private int port;
-    
+
 
 
     public AkkaHttpServer(String host, int port) {
         this.storageActor = system.actorOf(Props.create(StorageActor.class), "Storage");
-
+        this.host = host;
+        this.port = port;
+        this.system = ActorSystem.create("routes");
+        
     }
 
     public void start() {
