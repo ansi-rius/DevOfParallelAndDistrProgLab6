@@ -20,15 +20,24 @@ public class AkkaHttpServer {
     //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
     //query параметрами (url, counter) но счетчиком на 1 меньше. Либо осуществляет
     //запрос по url из параметра
-
-
-    //a. Инициализация http сервера в akka
     ActorSystem system = ActorSystem.create("routes");
-    final AsyncHttpClient asyncHttpClient = asyncHttpClient();
+
+    public AkkaHttpServer() {
+
+    }
+
+    public void start() {
+        //a. Инициализация http сервера в akka
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
+    }
 
 
-    final Http http = Http.get(system);
-    final ActorMaterializer materializer = ActorMaterializer.create(system);
+
+    //final AsyncHttpClient asyncHttpClient = asyncHttpClient();
+
+
+    //final Http http = Http.get(system);
+
 
 
 
