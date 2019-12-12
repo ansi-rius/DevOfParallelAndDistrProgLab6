@@ -9,7 +9,8 @@ public class AnonymizerApp {
         }
 
         String host = args[0];
-        String port = args[1];
+        int port = Integer.parseInt(args[1]);
+        
 
     }
 }
