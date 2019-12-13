@@ -89,11 +89,7 @@ public class Anonymization extends AllDirectives {
 
     }*/
 
-    private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
-        return FutureConverters.toJava(
-                Patterns.ask(storage, new GetRandomServerMessage())
-        )
-    }
+    
 
 
 
