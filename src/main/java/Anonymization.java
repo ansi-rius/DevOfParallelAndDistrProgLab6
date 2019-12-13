@@ -19,6 +19,7 @@ import org.asynchttpclient.Response;
 import scala.Int;
 import scala.compat.java8.FutureConverters;
 
+import java.net.ConnectException;
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
@@ -80,8 +81,16 @@ public class Anonymization extends AllDirectives {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnRandomServerMessage)o).getServer())
                 .thenCompose(msg ->
-                    urlRequest(makeRequest(getServUrl(msg), url, ActorRef.noSender());
-                    )
+                    urlRequest(makeRequest(getServUrl(msg), url, count))
+                    .handle((resp, ex) -> handleBadRequest(resp, ex, msg))
+                );
+    }
+
+    private Response handleBadRequest(Response resp, Throwable ex, String msg) {
+        if (ex instanceof ConnectException) {
+            storage.tell(new DeleteServerMessage(msg), ActorRef.noSender());
+        }
+        return resp;
     }
 
     private Request makeRequest(String servUrl, String url, int count) {
