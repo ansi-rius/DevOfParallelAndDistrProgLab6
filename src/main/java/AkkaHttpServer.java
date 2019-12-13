@@ -11,6 +11,7 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
@@ -48,7 +49,7 @@ public class AkkaHttpServer {
 
     }
 
-    public void start() throws IOException{
+    public void start() throws IOException, KeeperException, InterruptedException{
         final ZooKeeper zoo = new ZooKeeper(connectString, sessionTimeout, watcher -> log.info(watcher.toString()));
         //a. Инициализация http сервера в akka
         final Http http = Http.get(system);
@@ -57,7 +58,7 @@ public class AkkaHttpServer {
 
 
         final ServersHandler serverHandle = new ServersHandler(zoo, storage, serversPath);
-        serverHandle.startServer()
+        serverHandle.startServer(host, port);
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 ServerRoutes.createRoute(system)
