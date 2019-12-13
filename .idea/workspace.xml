@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/AkkaHttpServer.java" afterPath="$PROJECT_DIR$/src/main/java/AkkaHttpServer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnonymizerApp.java" afterPath="$PROJECT_DIR$/src/main/java/AnonymizerApp.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ServersHandler.java" afterPath="$PROJECT_DIR$/src/main/java/ServersHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -80,8 +79,8 @@
       <file leaf-file-name="ServersHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ServersHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+            <state relative-caret-position="373">
+              <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,12 +170,12 @@
         <option value="$PROJECT_DIR$/src/main/java/Messages/GetRandomServerMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/ListOfServersMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/ReturnRandomServerMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ServersHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/DeleteServerMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Anonymization.java" />
         <option value="$PROJECT_DIR$/src/main/java/StorageActor.java" />
         <option value="$PROJECT_DIR$/src/main/java/AkkaHttpServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/AnonymizerApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ServersHandler.java" />
       </list>
     </option>
   </component>
@@ -497,16 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Anonymization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1031">
-          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -529,6 +518,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Anonymization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1031">
+          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AkkaHttpServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
@@ -541,8 +540,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ServersHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+        <state relative-caret-position="373">
+          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

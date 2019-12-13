@@ -1,8 +1,5 @@
 import akka.actor.ActorRef;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.util.logging.Logger;
 
@@ -40,6 +37,11 @@ public class ServersHandler {
                 CreateMode.EPHEMERAL);
         log.info("Path connected "+serverPath);
     }
+
+    public void close() throws InterruptedException, KeeperException{
+        zoo.removeAllWatches(serversPath, Watcher.WatcherType.Any, true);
+    }
+    
 
 
 }
