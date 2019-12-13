@@ -1,6 +1,7 @@
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 public class ServersHandler {
@@ -52,6 +53,8 @@ public class ServersHandler {
         }
     }
 
-    private void 
+    private void saveServer(List<String> servers) {
+        this.serversStorage.tell(new );
+    }
 
 }
