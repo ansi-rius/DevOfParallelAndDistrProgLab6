@@ -1,4 +1,5 @@
 import akka.actor.ActorRef;
+import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
@@ -12,5 +13,9 @@ public class Anonymization {
         this.storage = storage;
         this.http = http;
         this.zoo = zoo;
+    }
+
+    public Route createRoute() {
+        
     }
 }
