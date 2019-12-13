@@ -27,7 +27,10 @@ public class Anonymization extends AllDirectives {
                             parameter("count", c -> {
                                 int count = Integer.parseInt(c);
                                 return count == 0 ?
-                                        completeWithFuture() 
+                                        completeWithFuture(urlRequest(url)) //если 0, то запрос по url из параметра
+                                        :
+                                        completeWithFuture()
+
                                     }
                             )
                         )
