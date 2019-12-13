@@ -28,7 +28,9 @@ public class ServersHandler {
     //byte[] data = zoo.getData("/servers/" + s, false, null);
     //System.out.println("server " + s + " data=" + new String(data)); }
 
-    
+    public void startServer() {
+        String serverPath = zoo.create()
+    }
 
 
 }
