@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/StorageActor.java" afterPath="$PROJECT_DIR$/src/main/java/StorageActor.java" />
-    </list>
+    <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,8 +60,8 @@
       <file leaf-file-name="StorageActor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+            <state relative-caret-position="702">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1176#1177#0" expanded="true" />
@@ -128,7 +126,7 @@
     <option name="x" value="710" />
     <option name="y" value="24" />
     <option name="width" value="970" />
-    <option name="height" value="904" />
+    <option name="height" value="621" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -304,7 +302,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="710" y="24" width="970" height="904" extended-state="0" />
+    <frame x="710" y="24" width="970" height="621" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -401,8 +399,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+        <state relative-caret-position="702">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1176#1177#0" expanded="true" />
