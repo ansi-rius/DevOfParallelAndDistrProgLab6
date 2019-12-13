@@ -47,15 +47,12 @@ public class ServersHandler {
     }
 
     private void watchChildrenCallback(WatchedEvent event) {
-        if (event != null) {
-            log.info(event.toString());
-        }
+
         try {
-            saveServer(
-                    zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
+                    this.serversStorage.tell(new ListOfServersMessage(zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
+                    //zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
                     .map(s -> serversPath+"/"+s)
-                    .collect(Collectors.toList())
-            );
+                    .collect(Collectors.toList())), ActorRef.noSender());
         } catch (KeeperException | InterruptedException e) {
             throw new RuntimeException(e);
         }
