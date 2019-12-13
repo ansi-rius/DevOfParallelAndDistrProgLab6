@@ -49,12 +49,14 @@ public class ServersHandler {
     private void watchChildrenCallback(WatchedEvent event) {
 
         try {
-                    this.serversStorage.tell(new ListOfServersMessage(zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
+            this.serversStorage.tell(new ListOfServersMessage(zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
                     //zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
-                    .map(s -> serversPath+"/"+s)
+                    .map(s -> serversPath + "/" + s)
                     .collect(Collectors.toList())), ActorRef.noSender());
-        } catch (KeeperException | InterruptedException e) {
+        } catch (KeeperException e) {
             throw new RuntimeException(e);
+        } catch (InterruptedException e1) {
+            throw new RuntimeException(e1);
         }
     }
 
