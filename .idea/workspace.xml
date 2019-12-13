@@ -63,9 +63,24 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="403">
-              <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+              <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReturnRandomServerMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ReturnRandomServerMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding>
+                <element signature="e#121#122#0" expanded="true" />
+                <element signature="e#157#158#0" expanded="true" />
+                <element signature="e#190#191#0" expanded="true" />
+                <element signature="e#219#220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,6 +138,7 @@
         <option value="$PROJECT_DIR$/src/main/java/ListOfServersMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/GetRandomServerMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/StorageActor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ReturnRandomServerMessage.java" />
       </list>
     </option>
   </component>
@@ -416,10 +432,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ReturnRandomServerMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#121#122#0" expanded="true" />
+            <element signature="e#157#158#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#219#220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
-          <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
