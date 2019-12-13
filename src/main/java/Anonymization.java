@@ -27,7 +27,7 @@ public class Anonymization extends AllDirectives {
                             parameter("count", c -> {
                                 int count = Integer.parseInt(c);
                                 return count == 0 ?
-                                        completeWithFuture()
+                                        completeWithFuture() 
                                     }
                             )
                         )
