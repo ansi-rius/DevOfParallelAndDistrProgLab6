@@ -29,13 +29,20 @@ public class StorageActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(ListOfServersMessage.class, this::receiveListOfServers) //--список серверов (который отправит zookeeper watcher)
+                //--список серверов (который отправит zookeeper watcher)
+                .match(ListOfServersMessage.class, this::receiveListOfServers)
+                //--запрос на получение случайного сервера
+                .match(GetRandomServerMessage.class, this::receiveGetRandomServerMessage)
     }
 
     private void receiveListOfServers(ListOfServersMessage msg) {
         log.info("List of servers: " + msg.getServersList());
         this.storage.clear();
         this.storage.addAll(msg.getServersList());
+    }
+
+    private void receiveGetRandomServerMessage(GetRandomServerMessage msg) {
+        
     }
 
 
