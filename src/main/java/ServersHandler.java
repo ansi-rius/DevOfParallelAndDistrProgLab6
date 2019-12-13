@@ -35,7 +35,7 @@ public class ServersHandler {
     //System.out.println("server " + s + " data=" + new String(data)); }
 
     public void startServer(String host, int port) throws KeeperException, InterruptedException{
-        String serverPath = zoo.create("/servers/"+host+":"+port,
+        String serverPath = zoo.create(serversPath+host+":"+port,
                 (host+":"+port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL);
