@@ -1,3 +1,4 @@
+import Messages.DeleteServerMessage;
 import Messages.GetRandomServerMessage;
 import Messages.ListOfServersMessage;
 import Messages.ReturnRandomServerMessage;
@@ -36,6 +37,7 @@ public class StorageActor extends AbstractActor {
                 .match(ListOfServersMessage.class, this::receiveListOfServers)
                 //--запрос на получение случайного сервера
                 .match(GetRandomServerMessage.class, this::receiveGetRandomServerMessage)
+                .match(DeleteServerMessage.class, this::receiveDeleteMessage)
                 .build();
     }
 
@@ -51,6 +53,10 @@ public class StorageActor extends AbstractActor {
                         ActorRef.noSender()
         );
 
+    }
+
+    private void receiveDeleteMessage(DeleteServerMessage msg) {
+        this.storage.remove(msg.getServer());
     }
 
 

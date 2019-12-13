@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="" />
+    <list default="true" id="3c699e4a-3002-42a2-89d5-c1835b69612c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/StorageActor.java" afterPath="$PROJECT_DIR$/src/main/java/StorageActor.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,10 +91,12 @@
       <file leaf-file-name="StorageActor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
-              <caret line="24" column="79" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="79" />
+            <state relative-caret-position="1044">
+              <caret line="58" column="45" lean-forward="false" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2089#2090#0" expanded="true" />
+                <element signature="e#2141#2142#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ListOfServersMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/GetRandomServerMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/ReturnRandomServerMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/StorageActor.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/GetRandomServerMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/ListOfServersMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/ReturnRandomServerMessage.java" />
@@ -172,6 +175,7 @@
         <option value="$PROJECT_DIR$/src/main/java/AkkaHttpServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Messages/DeleteServerMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Anonymization.java" />
+        <option value="$PROJECT_DIR$/src/main/java/StorageActor.java" />
       </list>
     </option>
   </component>
@@ -534,10 +538,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StorageActor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="24" column="79" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="79" />
+        <state relative-caret-position="1044">
+          <caret line="58" column="45" lean-forward="false" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2089#2090#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
           </folding>
         </state>
       </provider>
