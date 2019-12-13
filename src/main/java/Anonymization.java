@@ -74,7 +74,7 @@ public class Anonymization extends AllDirectives {
         return http.executeRequest(req).toCompletableFuture();
     }
 
-    private static CompletionStage<Response> requestWithLowerCount(String url, int count, storage) {
+    private static CompletionStage<Response> requestWithLowerCount(String url, int count, ActorRef storage) {
         return Patterns.ask(storage, new GetRandomServerMessage(), 5000)
                 .thenApply(o -> )
     }
