@@ -1,4 +1,5 @@
 import akka.actor.ActorRef;
+import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
@@ -33,7 +34,7 @@ public class ServersHandler {
         String serverPath = zoo.create("/servers/"+host+":"+port,
                 (host+":"+port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                )
+                CreateMode.EPHEMERAL);
     }
 
 
