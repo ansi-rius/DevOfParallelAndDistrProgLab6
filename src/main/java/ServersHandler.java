@@ -20,6 +20,7 @@ public class ServersHandler {
         this.zoo = zoo;
         this.serversPath = serversPath;
         this.serversStorage = serversStorage;
+        
     }
 
     //ZooK)eeper zoo = new ZooK)eeper("1MB27.0.0.1MB:21MB81MB", 3000, this); zoo.create("/servers/s",
@@ -41,7 +42,7 @@ public class ServersHandler {
     public void close() throws InterruptedException, KeeperException{
         zoo.removeAllWatches(serversPath, Watcher.WatcherType.Any, true);
     }
-    
+
 
 
 }
