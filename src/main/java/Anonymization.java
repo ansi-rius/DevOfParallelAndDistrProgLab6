@@ -58,7 +58,7 @@ public class Anonymization extends AllDirectives {
         () -> complete("Received something else") )
 
      */
-    private Route 
+    private Route
 
     private static CompletionStage<Response> urlRequest(Request req) {
         log.info("Request "+url);
