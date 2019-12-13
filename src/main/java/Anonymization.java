@@ -25,7 +25,7 @@ public class Anonymization extends AllDirectives {
 
     //д. Cтроим дерево route и пишем обработчики запросов
 
-    public Route createRoute(ActorSystem) {
+    public Route createRoute(ActorSystem system) {
         //создаем с помощью api route в акка http сервер который принимает два
         //параметра,
         return route(
@@ -43,7 +43,7 @@ public class Anonymization extends AllDirectives {
                                     }
                             )
                         )
-
+                )
         );
 
     }
@@ -59,7 +59,9 @@ public class Anonymization extends AllDirectives {
 
     private static CompletionStage<HttpResponse> urlRequest(String url, ActorSystem system) {
         log.info("Request "+url);
-        return Http.get(system)
+        return Http.get(system).singleRequest(HttpRequest.create(url));
     }
+
+    
 
 }
