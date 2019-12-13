@@ -3,9 +3,11 @@ import Messages.ReturnRandomServerMessage;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.Query;
 import akka.http.javadsl.model.Uri;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.japi.Pair;
 import akka.pattern.Patterns;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
@@ -72,13 +74,23 @@ public class Anonymization extends AllDirectives {
     private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(obj -> ((ReturnRandomServerMessage)obj).getServer())
-                .thenCompose(msg -> urlRequest(getUri(msg), system)
-                        .query()
-        ())
+                .thenCompose(msg -> urlRequest(
+                        getUri(msg),
+                        system)
+                        .query(
+                                Query.create(
+                                        Pair.create("url", url),
+                                        Pair.create("cout", count)
+                                )
+                        )
+                        .toString()
+                )
+        );
+
     }
 
-    public static Uri getUri(String adr) {
-        return Uri.create("http://"+adr);
+    public static String getUri(String adr) {
+        return "http://"+adr;
     }
 
 }
