@@ -26,13 +26,16 @@ public class AkkaHttpServer {
     //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
     //query параметрами (url, counter) но счетчиком на 1 меньше. Либо осуществляет
     //запрос по url из параметра
+
+    private static String connectString = "127.0.0.1:2181";
+    private static int sessionTimeout = 3000;
+    private static String serversPath = "/servers";
+
     private ActorSystem system;
     private ActorRef storage;
     private CompletionStage<ServerBinding> binding;
     private String host;
     private int port;
-    private String connectString = "127.0.0.1:2181";
-    private int sessionTimeout = 3000;
     private Logger log = Logger.getLogger(AkkaHttpServer.class.getName());
 
 
