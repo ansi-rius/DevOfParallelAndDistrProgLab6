@@ -9,6 +9,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import org.asynchttpclient.Response;
 
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
@@ -65,8 +66,9 @@ public class Anonymization extends AllDirectives {
         return Http.get(system).singleRequest(HttpRequest.create(url));
     }
 
-    private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count) {
+    private CompletionStage<Response> requestWithLowerCount(String url, int count) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
+                .thenApply(obj -> )
     }
 
 }
