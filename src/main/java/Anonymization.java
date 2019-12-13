@@ -22,8 +22,9 @@ public class Anonymization {
         return
                 route(
                         get(() ->
-                                parameter("url", packageID -> {
-                                    
+                                parameter("url", url ->
+                                    parameter("count"){
+
                                     return completeOKWithFuture();
                                 })
                         )
