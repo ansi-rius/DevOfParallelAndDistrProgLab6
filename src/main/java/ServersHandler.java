@@ -1,4 +1,5 @@
 import akka.actor.ActorRef;
+import org.apache.zookeeper.ZooKeeper;
 
 public class ServersHandler {
     //создаем с помощью api route в акка http сервер который принимает два
@@ -11,7 +12,13 @@ public class ServersHandler {
 
     private String serversPath;
     private ActorRef serversStorage;
+    private ZooKeeper zoo;
 
+    public ServersHandler(ZooKeeper zoo, ActorRef serversStorage, String serversPath) {
+        this.zoo = zoo;
+        this.serversPath = serversPath;
+        this.serversStorage = serversStorage;
+    }
     
 
 
