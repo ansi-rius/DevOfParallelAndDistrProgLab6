@@ -20,7 +20,10 @@ public class Anonymization extends AllDirectives {
 
     public Route createRoute(ActorRef RouteActor) {
 
-        return route();
+        return route(
+                get(() ->
+                        
+        );
 
     }
 
