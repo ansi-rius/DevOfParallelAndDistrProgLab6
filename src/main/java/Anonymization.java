@@ -45,7 +45,7 @@ public class Anonymization extends AllDirectives {
                                 return count == 0 ?
                                         completeWithFuture(urlRequest(url, system)) //если 0, то запрос по url из параметра
                                         :
-                                        completeWithFuture(requestWithLowerCount(url, count-1)); //если счетчик не равен 0, то сначала получает новый урл сервера
+                                        completeWithFuture(requestWithLowerCount(url, count-1, system)); //если счетчик не равен 0, то сначала получает новый урл сервера
                                 //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
                                 //query параметрами (url, counter) но счетчиком на 1 меньше.
 
@@ -71,25 +71,31 @@ public class Anonymization extends AllDirectives {
         return Http.get(system).singleRequest(HttpRequest.create(url));
     }
 
-    private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
+    /*private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(obj -> ((ReturnRandomServerMessage)obj).getServer())
-                .thenCompose(msg -> {
-                            return urlRequest(
-                                    getUri(msg),
-                                    system)
-                                    .query(
-                                            Query.create(
-                                                    Pair.create("url", url),
-                                                    Pair.create("cout", count)
-                                            )
-                                    )
-                                    .toString();
-                        }
+                .thenCompose(msg -> urlRequest(
+                        getUri(msg),
+                        system)
+                        .query(
+                                Query.create(
+                                        Pair.create("url", url),
+                                        Pair.create("cout", count)
+                                )
+                        )
+                        .toString()
                 )
         );
 
+    }*/
+
+    private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
+        return FutureConverters.toJava(
+                Patterns.ask(storage, new GetRandomServerMessage())
+        )
     }
+
+
 
     public static String getUri(String adr) {
         return "http://"+adr;
