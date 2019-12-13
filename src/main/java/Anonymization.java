@@ -17,18 +17,10 @@ public class Anonymization {
 
     //д. Cтроим дерево route и пишем обработчики запросов
 
-    static Route createRoute(ActorRef RouteActor) {
-        return
-                route(
-                        get(() ->
-                                parameter("url", url ->
-                                    parameter("count"){
+    public Route createRoute(ActorRef RouteActor) {
 
-                                    return completeOKWithFuture();
-                                })
-                        )
-
-                );
+        return route
+                
     }
 
     /*
