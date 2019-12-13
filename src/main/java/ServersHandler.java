@@ -1,8 +1,10 @@
+import Messages.ListOfServersMessage;
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class ServersHandler {
     //создаем с помощью api route в акка http сервер который принимает два
@@ -49,12 +51,18 @@ public class ServersHandler {
             log.info(event.toString());
         }
         try {
-
+            saveServer(
+                    zoo.getChildren(serversPath, this::watchChildrenCallback).stream()
+                    .map(s -> serversPath+"/"+s)
+                    .collect(Collectors.toList())
+            );
+        } catch (KeeperException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     private void saveServer(List<String> servers) {
-        this.serversStorage.tell(new );
+        this.serversStorage.tell(new ListOfServersMessage(servers), ActorRef.noSender());
     }
 
 }
