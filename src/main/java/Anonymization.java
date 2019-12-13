@@ -41,11 +41,8 @@ public class Anonymization extends AllDirectives {
         return route(
                 get(() ->
                         parameter("url", url ->
-                            parameter("count", c -> {
-                                
-
-
-                                    }
+                            parameter("count", c ->
+                                handleGetWithUrlCount(url, Integer.parseInt(c))
                             )
                         )
                 )
@@ -61,6 +58,7 @@ public class Anonymization extends AllDirectives {
         () -> complete("Received something else") )
 
      */
+    private Route 
 
     private static CompletionStage<Response> urlRequest(Request req) {
         log.info("Request "+url);
