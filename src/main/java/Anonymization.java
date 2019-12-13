@@ -19,10 +19,12 @@ public class Anonymization extends AllDirectives {
     //д. Cтроим дерево route и пишем обработчики запросов
 
     public Route createRoute(ActorRef RouteActor) {
-
+        //создаем с помощью api route в акка http сервер который принимает два
+        //параметра,
         return route(
                 get(() ->
                         
+
         );
 
     }
