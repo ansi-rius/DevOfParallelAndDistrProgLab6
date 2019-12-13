@@ -17,7 +17,7 @@ public class AnonymizerApp {
         AkkaHttpServer server = new AkkaHttpServer(host, port);
         server.start();
         System.in.read();
-
+        server.close();
 
 
 

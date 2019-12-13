@@ -38,6 +38,9 @@ public class AkkaHttpServer {
     private String host;
     private int port;
     private Logger log = Logger.getLogger(AkkaHttpServer.class.getName());
+    private AsyncHttpClient asyncHttpClient = asyncHttpClient();
+    ServersHandler serverHandle;
+    ZooKeeper zoo;
 
 
 
@@ -50,14 +53,14 @@ public class AkkaHttpServer {
     }
 
     public void start() throws IOException, KeeperException, InterruptedException{
-        final ZooKeeper zoo = new ZooKeeper(connectString, sessionTimeout, watcher -> log.info(watcher.toString()));
+        zoo = new ZooKeeper(connectString, sessionTimeout, watcher -> log.info(watcher.toString()));
         //a. Инициализация http сервера в akka
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
 
-        final ServersHandler serverHandle = new ServersHandler(zoo, storage, serversPath);
+        ServersHandler serverHandle = new ServersHandler(zoo, storage, serversPath);
         serverHandle.startServer(host, port);
 
         final Anonymization anonymousServer = new Anonymization(storage, asyncHttpClient, zoo);
@@ -75,8 +78,10 @@ public class AkkaHttpServer {
         System.out.println("Server started!");
     }
 
-    public void close() {
+    public void close() throws IOException, InterruptedException{
         asyncHttpClient.close();
+        serverHandle.close();
+        zoo.close();
         //закрываем
         binding
                 .thenCompose(ServerBinding::unbind)
