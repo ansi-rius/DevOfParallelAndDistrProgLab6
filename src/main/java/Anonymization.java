@@ -75,7 +75,7 @@ public class Anonymization extends AllDirectives {
     }
 
     private CompletionStage<Response> requestWithLowerCount(String url, int count) {
-        
+        return Patterns.ask()
     }
 
 }
