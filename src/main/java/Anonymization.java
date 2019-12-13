@@ -58,7 +58,7 @@ public class Anonymization extends AllDirectives {
         () -> complete("Received something else") )
      */
 
-    
+
     private Route handleGetWithUrlCount(String url, int count) {
         CompletionStage<Response> response = count == 0 ?
                 urlRequest(http.prepareGet(url).build()) //если 0, то запрос по url из параметра
@@ -69,13 +69,13 @@ public class Anonymization extends AllDirectives {
         return completeOKWithFutureString(response.thenApply(Response::getResponseBody));
     }
 
-    private static CompletionStage<Response> urlRequest(Request req) {
-        log.info("Request "+url);
-        return http.executeRequest()
+    private CompletionStage<Response> urlRequest(Request req) {
+        log.info("Request "+req.getUri());
+        return http.executeRequest(req).toCompletableFuture();
     }
 
-    private CompletionStage<> requestWithLowerCount(String url, int count) {
-
+    private CompletionStage<Response> requestWithLowerCount(String url, int count) {
+        
     }
 
 }
