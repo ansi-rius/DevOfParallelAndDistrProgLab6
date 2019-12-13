@@ -6,4 +6,10 @@ public class StorageActor extends AbstractActor {
     //--список серверов (который отправит zookeeper watcher)
     //--запрос на получение случайного сервера
     
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
+
+
 }
