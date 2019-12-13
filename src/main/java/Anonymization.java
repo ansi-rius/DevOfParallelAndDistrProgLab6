@@ -66,35 +66,11 @@ public class Anonymization extends AllDirectives {
 
      */
 
-    private static CompletionStage<HttpResponse> urlRequest(String url, ActorSystem system) {
+    private static CompletionStage<Response> urlRequest(String url, ActorSystem system) {
         log.info("Request "+url);
-        return Http.get(system).singleRequest(HttpRequest.create(url));
+        return http.executeRequest()
     }
 
-    /*private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
-        return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
-                .thenApply(obj -> ((ReturnRandomServerMessage)obj).getServer())
-                .thenCompose(msg -> urlRequest(
-                        getUri(msg),
-                        system)
-                        .query(
-                                Query.create(
-                                        Pair.create("url", url),
-                                        Pair.create("cout", count)
-                                )
-                        )
-                        .toString()
-                )
-        );
-
-    }*/
-
-    
-
-
-
-    public static String getUri(String adr) {
-        return "http://"+adr;
-    }
+    private CompletionStage<>
 
 }
