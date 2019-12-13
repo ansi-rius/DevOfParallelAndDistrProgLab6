@@ -80,7 +80,7 @@ public class AkkaHttpServer {
 
     public void close() throws IOException, InterruptedException,  KeeperException{
         asyncHttpClient.close();
-        //serverHandle.removeAllWatches();
+        serverHandle.removeAllWatches();
         zoo.close();
         //закрываем
         binding
