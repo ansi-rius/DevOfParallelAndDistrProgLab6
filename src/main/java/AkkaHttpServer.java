@@ -69,13 +69,14 @@ public class AkkaHttpServer {
         //метода которому передаем Http, ActorSystem и ActorMaterializer>;
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8086),
+                ConnectHttp.toHost(host, port),
                 materializer
         );
         System.out.println("Server started!");
     }
 
     public void close() {
+        asyncHttpClient.close();
         //закрываем
         binding
                 .thenCompose(ServerBinding::unbind)
