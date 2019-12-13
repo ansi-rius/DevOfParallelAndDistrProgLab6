@@ -1,3 +1,5 @@
+package Messages;
+
 public class ReturnRandomServerMessage {
     private String server;
 
