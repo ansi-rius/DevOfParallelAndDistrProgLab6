@@ -18,7 +18,7 @@ public class Anonymization {
 
     //д. Cтроим дерево route и пишем обработчики запросов
 
-    private Route createRoute(ActorRef RouteActor) {
+    static Route createRoute(ActorRef RouteActor) {
         return
                 route(
                         get(() ->
@@ -30,13 +30,7 @@ public class Anonymization {
                                     );
                                     return completeOKWithFuture(result, Jackson.marshaller());
                                 })
-                        ),
-                        post(() -> entity(Jackson.unmarshaller(JSRequestMessage.class), m -> {
-                                    RouteActor.tell(m, ActorRef.noSender());
-                                    return complete("Test started!\n");
-                                })
                         )
-
 
                 );
     }
