@@ -27,7 +27,7 @@ public class AkkaHttpServer {
     //query параметрами (url, counter) но счетчиком на 1 меньше. Либо осуществляет
     //запрос по url из параметра
     private ActorSystem system;
-    private ActorRef storageActor;
+    private ActorRef storage;
     private CompletionStage<ServerBinding> binding;
     private String host;
     private int port;
@@ -38,7 +38,7 @@ public class AkkaHttpServer {
 
 
     public AkkaHttpServer(String host, int port) {
-        this.storageActor = system.actorOf(Props.create(StorageActor.class), "Storage");
+        this.storage = system.actorOf(Props.create(StorageActor.class), "Storage");
         this.host = host;
         this.port = port;
         this.system = ActorSystem.create("routes");
@@ -51,7 +51,9 @@ public class AkkaHttpServer {
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
-        final ServersHandler serverHandle = new ServersHandler
+
+
+        final ServersHandler serverHandle = new ServersHandler(zoo, storage)
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 ServerRoutes.createRoute(system)
                         .flow(system, materializer);
