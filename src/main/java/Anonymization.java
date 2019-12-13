@@ -1,5 +1,6 @@
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.http.javadsl.Http;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
@@ -58,6 +59,7 @@ public class Anonymization extends AllDirectives {
 
     private static CompletionStage<HttpResponse> urlRequest(String url) {
         log.info("Request "+url);
+        return Http.get()
     }
 
 }
