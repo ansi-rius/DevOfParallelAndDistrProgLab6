@@ -53,11 +53,11 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Anonymization.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+              <caret line="59" column="33" lean-forward="false" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2145#2146#0" expanded="true" />
-                <element signature="e#2172#2173#0" expanded="true" />
+                <element signature="e#2185#2186#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -510,11 +510,11 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Anonymization.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+          <caret line="59" column="33" lean-forward="false" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2145#2146#0" expanded="true" />
-            <element signature="e#2172#2173#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
           </folding>
         </state>
       </provider>

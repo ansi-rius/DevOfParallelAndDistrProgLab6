@@ -57,7 +57,7 @@ public class Anonymization extends AllDirectives {
      */
 
     private static CompletionStage<HttpResponse> urlRequest(String url) {
-        log.info("")
+        log.info("Request "+url);
     }
 
 }
