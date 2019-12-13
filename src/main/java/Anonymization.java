@@ -22,13 +22,9 @@ public class Anonymization {
         return
                 route(
                         get(() ->
-                                parameter("packageId", packageID -> {
-                                    Future<Object> result = Patterns.ask(
-                                            RouteActor,
-                                            new TestResultRequestMessage(packageID),
-                                            5000
-                                    );
-                                    return completeOKWithFuture(result, Jackson.marshaller());
+                                parameter("url", packageID -> {
+                                    
+                                    return completeOKWithFuture();
                                 })
                         )
 
