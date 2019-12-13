@@ -58,6 +58,7 @@ public class AkkaHttpServer {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
+        storage = system.actorOf(Props.create(StorageActor.class), "Storage");
 
         ServersHandler serverHandle = new ServersHandler(zoo, storage, serversPath);
         serverHandle.startServer(host, port);
