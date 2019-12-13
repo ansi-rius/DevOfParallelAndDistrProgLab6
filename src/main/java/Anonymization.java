@@ -18,7 +18,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
 
 public class Anonymization extends AllDirectives {
-    private static ActorRef storage;
+    private ActorRef storage;
     private AsyncHttpClient http;
     private ZooKeeper zoo;
     private static Logger log = Logger.getLogger(Anonymization.class.getName());
