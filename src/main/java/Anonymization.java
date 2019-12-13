@@ -13,6 +13,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
 import scala.compat.java8.FutureConverters;
 
@@ -41,13 +42,8 @@ public class Anonymization extends AllDirectives {
                 get(() ->
                         parameter("url", url ->
                             parameter("count", c -> {
-                                int count = Integer.parseInt(c);
-                                return count == 0 ?
-                                        completeWithFuture(urlRequest(url, system)) //если 0, то запрос по url из параметра
-                                        :
-                                        completeWithFuture(requestWithLowerCount(url, count-1, system)); //если счетчик не равен 0, то сначала получает новый урл сервера
-                                //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
-                                //query параметрами (url, counter) но счетчиком на 1 меньше.
+                                
+
 
                                     }
                             )
@@ -66,7 +62,7 @@ public class Anonymization extends AllDirectives {
 
      */
 
-    private static CompletionStage<Response> urlRequest(String url, ActorSystem system) {
+    private static CompletionStage<Response> urlRequest(Request req) {
         log.info("Request "+url);
         return http.executeRequest()
     }
