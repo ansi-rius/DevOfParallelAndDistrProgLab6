@@ -26,7 +26,7 @@ public class StorageActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(ListOfServersMessage.class, ...)
+                .match(ListOfServersMessage.class, ...) //--список серверов (который отправит zookeeper watcher)
     }
 
 
