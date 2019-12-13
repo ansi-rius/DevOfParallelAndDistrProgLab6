@@ -60,10 +60,10 @@ public class AkkaHttpServer {
         final ServersHandler serverHandle = new ServersHandler(zoo, storage, serversPath);
         serverHandle.startServer(host, port);
 
-        final Anonymization anonymousServer
+        final Anonymization anonymousServer = new Anonymization(storage, asyncHttpClient, zoo);
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                ServerRoutes.createRoute(system)
+                anonymousServer.createRoute(system)
                         .flow(system, materializer);
 
         //метода которому передаем Http, ActorSystem и ActorMaterializer>;
