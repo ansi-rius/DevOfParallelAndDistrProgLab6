@@ -22,7 +22,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
 
 public class Anonymization extends AllDirectives {
-    private ActorRef storage;
+    private static ActorRef storage;
     private AsyncHttpClient http;
     private ZooKeeper zoo;
     private static Logger log = Logger.getLogger(Anonymization.class.getName());
@@ -74,9 +74,11 @@ public class Anonymization extends AllDirectives {
         return http.executeRequest(req).toCompletableFuture();
     }
 
-    private static CompletionStage<Response> requestWithLowerCount(String url, int count, ActorRef storage) {
-        return Patterns.ask(storage, new GetRandomServerMessage(), 5000)
-                .thenApply(o -> )
+    private CompletionStage<Response> requestWithLowerCount(String url, int count) {
+        return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
+                .thenApply(o -> ((ReturnRandomServerMessage)o).getServer())
+                .thenCompose(msg ->
+                    urlRequest(makeRequest())
     }
 
 }
