@@ -1,4 +1,5 @@
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class StorageActor extends AbstractActor {
                 .match(ListOfServersMessage.class, this::receiveListOfServers)
                 //--запрос на получение случайного сервера
                 .match(GetRandomServerMessage.class, this::receiveGetRandomServerMessage)
+                .build();
     }
 
     private void receiveListOfServers(ListOfServersMessage msg) {
@@ -43,8 +45,10 @@ public class StorageActor extends AbstractActor {
 
     private void receiveGetRandomServerMessage(GetRandomServerMessage msg) {
         getSender().tell(
-                new ReturnRandomServerMessage()
+                new ReturnRandomServerMessage(storage.get(randomServer.nextInt(storage.size()))),
+                        ActorRef.noSender()
         );
+
     }
 
 
