@@ -25,7 +25,7 @@ public class Anonymization extends AllDirectives {
 
     //д. Cтроим дерево route и пишем обработчики запросов
 
-    public Route createRoute(ActorRef RouteActor) {
+    public Route createRoute(ActorSystem) {
         //создаем с помощью api route в акка http сервер который принимает два
         //параметра,
         return route(
@@ -34,7 +34,7 @@ public class Anonymization extends AllDirectives {
                             parameter("count", c -> {
                                 int count = Integer.parseInt(c);
                                 return count == 0 ?
-                                        completeWithFuture(urlRequest(url)) //если 0, то запрос по url из параметра
+                                        completeWithFuture(urlRequest(url, system)) //если 0, то запрос по url из параметра
                                         :
                                         completeWithFuture(requestWithLowerCount(url, count)); //если счетчик не равен 0, то сначала получает новый урл сервера
                                 //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
@@ -57,9 +57,9 @@ public class Anonymization extends AllDirectives {
 
      */
 
-    private static CompletionStage<HttpResponse> urlRequest(String url) {
+    private static CompletionStage<HttpResponse> urlRequest(String url, ActorSystem system) {
         log.info("Request "+url);
-        return Http.get()
+        return Http.get(system)
     }
 
 }
