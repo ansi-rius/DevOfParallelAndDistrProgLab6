@@ -76,23 +76,27 @@ public class Anonymization extends AllDirectives {
         return http.executeRequest(req).toCompletableFuture();
     }
 
-    private CompletionStage<Response> requestWithLowerCount(String url, int count) throws KeeperException, InterruptedException {
+    private CompletionStage<Response> requestWithLowerCount(String url, int count) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnRandomServerMessage)o).getServer())
                 .thenCompose(msg ->
-                    urlRequest(makeRequest(getServUrl(msg), ActorRef.noSender());
+                    urlRequest(makeRequest(getServUrl(msg), url, ActorRef.noSender());
                     )
     }
 
-    private Request makeRequest(String servUrl, String url, int count) throws KeeperException, InterruptedException{
+    private Request makeRequest(String servUrl, String url, int count) {
         return http.prepareGet(servUrl)
                 .addQueryParam("url", url)
                 .addQueryParam("count", Integer.toString(count))
                 .build();
     }
 
-    private String getServUrl(String obj) throws KeeperException, InterruptedException{
-        return new String(zoo.getData(obj, false, null));
+    private String getServUrl(String obj) {
+        try {
+            return new String(zoo.getData(obj, false, null));
+        } catch (KeeperException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
