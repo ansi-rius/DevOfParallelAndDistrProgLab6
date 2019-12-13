@@ -81,4 +81,10 @@ public class Anonymization extends AllDirectives {
                     urlRequest(makeRequest())
     }
 
+    private Request makeRequest(String servUrl, String url, int count) {
+        return http.prepareGet(servUrl)
+                .addQueryParam("url", url)
+                .addQueryParam("count", Integer.toString(count))
+    }
+
 }
