@@ -1,23 +1,16 @@
+import Messages.DeleteServerMessage;
 import Messages.GetRandomServerMessage;
 import Messages.ReturnRandomServerMessage;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import akka.http.javadsl.Http;
-import akka.http.javadsl.model.Query;
-import akka.http.javadsl.model.Uri;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
-import akka.japi.Pair;
 import akka.pattern.Patterns;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
-import akka.http.javadsl.model.HttpRequest;
-import akka.http.javadsl.model.HttpResponse;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
-import scala.Int;
-import scala.compat.java8.FutureConverters;
 
 import java.net.ConnectException;
 import java.time.Duration;
