@@ -4,7 +4,6 @@ import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
-
 public class Anonymization {
     private ActorRef storage;
     private AsyncHttpClient http;
