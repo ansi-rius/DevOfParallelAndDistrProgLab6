@@ -19,6 +19,7 @@ public class Anonymization {
     public Route createRoute(ActorSystem system) {
         return route(
             get(() ->
+                    parameter
         );
     }
 }
