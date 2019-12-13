@@ -78,7 +78,7 @@ public class AkkaHttpServer {
         System.out.println("Server started!");
     }
 
-    public void close() throws IOException, InterruptedException{
+    public void close() throws IOException, InterruptedException,  KeeperException{
         asyncHttpClient.close();
         serverHandle.close();
         zoo.close();
