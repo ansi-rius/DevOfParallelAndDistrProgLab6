@@ -24,7 +24,7 @@ public class Anonymization extends AllDirectives {
         return route(
                 get(() ->
                         parameter("url", url ->
-                            parameter()
+                            parameter("count")
                         )
 
         );
