@@ -56,15 +56,26 @@ public class Anonymization extends AllDirectives {
         Route route = get(
         () -> complete("Received GET") ).orElse(
         () -> complete("Received something else") )
-
      */
-    private Route
+
+    
+    private Route handleGetWithUrlCount(String url, int count) {
+        CompletionStage<Response> response = count == 0 ?
+                urlRequest(http.prepareGet(url).build()) //если 0, то запрос по url из параметра
+                :
+                requestWithLowerCount(url, count-1); //если счетчик не равен 0, то сначала получает новый урл сервера
+        //(от актора хранилища конфигурации) и делает запрос к нему с аналогичными
+        //query параметрами (url, counter) но счетчиком на 1 меньше.
+        return completeOKWithFutureString(response.thenApply(Response::getResponseBody));
+    }
 
     private static CompletionStage<Response> urlRequest(Request req) {
         log.info("Request "+url);
         return http.executeRequest()
     }
 
-    private CompletionStage<>
+    private CompletionStage<> requestWithLowerCount(String url, int count) {
+
+    }
 
 }
