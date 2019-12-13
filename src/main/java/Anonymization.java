@@ -1,4 +1,5 @@
 import Messages.GetRandomServerMessage;
+import Messages.ReturnRandomServerMessage;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
@@ -68,7 +69,7 @@ public class Anonymization extends AllDirectives {
 
     private CompletionStage<Response> requestWithLowerCount(String url, int count) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
-                .thenApply(obj -> )
+                .thenApply(obj -> ReturnRandomServerMessage)
     }
 
 }
