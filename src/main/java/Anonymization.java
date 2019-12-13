@@ -76,7 +76,7 @@ public class Anonymization extends AllDirectives {
     }
 
     public static Uri getUri(String adr) {
-        return Uri.create()
+        return Uri.create("http://"+adr);
     }
 
 }
