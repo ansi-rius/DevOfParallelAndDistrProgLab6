@@ -9,12 +9,14 @@ import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
 import akka.pattern.Patterns;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
+import scala.Int;
 import scala.compat.java8.FutureConverters;
 
 import java.time.Duration;
@@ -74,18 +76,23 @@ public class Anonymization extends AllDirectives {
         return http.executeRequest(req).toCompletableFuture();
     }
 
-    private CompletionStage<Response> requestWithLowerCount(String url, int count) {
+    private CompletionStage<Response> requestWithLowerCount(String url, int count) throws KeeperException, InterruptedException {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnRandomServerMessage)o).getServer())
                 .thenCompose(msg ->
-                    urlRequest(makeRequest())
+                    urlRequest(makeRequest(getServUrl(msg), ActorRef.noSender());
+                    )
     }
 
-    private Request makeRequest(String servUrl, String url, int count) {
+    private Request makeRequest(String servUrl, String url, int count) throws KeeperException, InterruptedException{
         return http.prepareGet(servUrl)
                 .addQueryParam("url", url)
                 .addQueryParam("count", Integer.toString(count))
                 .build();
+    }
+
+    private String getServUrl(String obj) throws KeeperException, InterruptedException{
+        return new String(zoo.getData(obj, false, null));
     }
 
 }
