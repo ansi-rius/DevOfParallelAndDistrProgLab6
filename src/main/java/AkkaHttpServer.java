@@ -60,6 +60,8 @@ public class AkkaHttpServer {
         final ServersHandler serverHandle = new ServersHandler(zoo, storage, serversPath);
         serverHandle.startServer(host, port);
 
+        final Anonymization anonymousServer 
+
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 ServerRoutes.createRoute(system)
                         .flow(system, materializer);
