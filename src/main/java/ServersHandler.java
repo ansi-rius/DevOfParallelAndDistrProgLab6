@@ -7,7 +7,7 @@ public class ServersHandler {
 
     //слайд 23
 
-    private String serversPath
+    private String serversPath;
 
 
 }
