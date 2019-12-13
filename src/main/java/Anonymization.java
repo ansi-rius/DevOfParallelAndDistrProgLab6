@@ -3,6 +3,7 @@ import Messages.ReturnRandomServerMessage;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.Uri;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
@@ -72,6 +73,10 @@ public class Anonymization extends AllDirectives {
                 .thenApply(obj -> ((ReturnRandomServerMessage)obj).getServer())
                 .thenCompose(msg -> urlRequest(system, getUri(msg.get))
         ())
+    }
+
+    public static Uri getUri(String adr) {
+        return Uri.create()
     }
 
 }
