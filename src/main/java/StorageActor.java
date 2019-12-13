@@ -19,7 +19,7 @@ public class StorageActor extends AbstractActor {
     //осуществляет get для данного url и возвращает.
     private List<String> storage;
     private Random randomServer;
-    private Logger log = Logger.getLogger(StorageActor.class.getName());
+    private static Logger log = Logger.getLogger(StorageActor.class.getName());
 
     public StorageActor() {
         this.storage = new ArrayList<>();
@@ -33,7 +33,9 @@ public class StorageActor extends AbstractActor {
     }
 
     private void receiveListOfServers(ListOfServersMessage msg) {
-        log.Info()
+        log.info("List of servers: " + msg.getServersList());
+        this.storage.clear();
+        this.storage.addAll(msg.getServersList());
     }
 
 
