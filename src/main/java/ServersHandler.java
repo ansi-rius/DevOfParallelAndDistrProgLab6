@@ -29,7 +29,7 @@ public class ServersHandler {
     //System.out.println("server " + s + " data=" + new String(data)); }
 
     public void startServer() {
-        String serverPath = zoo.create()
+        String serverPath = zoo.create("/servers/"+host+)
     }
 
 
