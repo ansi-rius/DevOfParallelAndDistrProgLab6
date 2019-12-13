@@ -12,6 +12,7 @@ import org.asynchttpclient.AsyncHttpClient;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import org.asynchttpclient.Response;
+import scala.compat.java8.FutureConverters;
 
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
@@ -68,10 +69,11 @@ public class Anonymization extends AllDirectives {
         return Http.get(system).singleRequest(HttpRequest.create(url));
     }
 
-    private CompletionStage<Response> requestWithLowerCount(String url, int count) {
+    private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(obj -> ((ReturnRandomServerMessage)obj).getServer())
-                .thenCompose(msg -> urlRequest(system, getUri(msg))
+                .thenCompose(msg -> urlRequest(getUri(msg), system)
+                        .query()
         ())
     }
 
