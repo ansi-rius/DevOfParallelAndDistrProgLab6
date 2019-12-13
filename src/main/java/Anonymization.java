@@ -16,10 +16,37 @@ public class Anonymization {
         this.zoo = zoo;
     }
 
-    public Route createRoute(ActorSystem system) {
-        return route(
-            get(() ->
-                    parameter
-        );
+    //д. Cтроим дерево route и пишем обработчики запросов
+
+    private Route createRoute(ActorRef RouteActor) {
+        return
+                route(
+                        get(() ->
+                                parameter("packageId", packageID -> {
+                                    Future<Object> result = Patterns.ask(
+                                            RouteActor,
+                                            new TestResultRequestMessage(packageID),
+                                            5000
+                                    );
+                                    return completeOKWithFuture(result, Jackson.marshaller());
+                                })
+                        ),
+                        post(() -> entity(Jackson.unmarshaller(JSRequestMessage.class), m -> {
+                                    RouteActor.tell(m, ActorRef.noSender());
+                                    return complete("Test started!\n");
+                                })
+                        )
+
+
+                );
     }
+
+    /*
+
+    Минимальный пример
+        Route route = get(
+        () -> complete("Received GET") ).orElse(
+        () -> complete("Received something else") )
+
+     */
 }
