@@ -72,9 +72,8 @@ public class Anonymization extends AllDirectives {
     private CompletionStage<HttpResponse> requestWithLowerCount(String url, int count, ActorSystem system) {
         return Patterns.ask(storage, new GetRandomServerMessage(), Duration.ofSeconds(3))
                 .thenApply(obj -> ((ReturnRandomServerMessage)obj).getServer())
-                .thenCompose(msg -> urlRequest(getUri(msg), system)
-                        .query()
-        ())
+                .thenCompose(msg -> 
+
     }
 
     public static Uri getUri(String adr) {
